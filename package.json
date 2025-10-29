@@ -2,7 +2,7 @@
   "name": "todomindbox",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ak1rg.github.io/todomindbox/",
+  "homepage": "https://ak1rg.github.io/todo/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
