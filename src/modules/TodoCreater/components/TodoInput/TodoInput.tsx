@@ -1,11 +1,12 @@
 'use client';
 import { addTodo } from '@/store/reducers/appSlice/appSlice'
-import { useAppDispatch } from '@/store/store'
-import { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react'
+import { useAppDispatch, useAppSelector } from '@/store/store'
+import { ChangeEvent, KeyboardEvent, useState } from 'react'
 
 const TodoInput = () => {
 
     const dispatch = useAppDispatch()
+    const todos = useAppSelector(s => s.app.todosList)
 
     const [todoString, setTodoString] = useState<string>('')
 
@@ -13,9 +14,17 @@ const TodoInput = () => {
         setTodoString(event.target.value)
     }
 
+    const checkToSimilar = () => {
+        return todos.some(todo => todo.string === todoString);
+    }
+
     const keydownFunc = (event: KeyboardEvent<HTMLInputElement>) => {
+        if(checkToSimilar()) return
         if(event.key === 'Enter' && todoString.trim() !== '') {
-            dispatch(addTodo({string:todoString,check:false}))
+            dispatch(addTodo({
+                string:todoString,
+                check:false,
+            }))
             setTodoString('')
         }
     }

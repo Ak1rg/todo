@@ -33,7 +33,7 @@ const BottomButtons = () => {
     },[todoList,listValue])
 
     return (
-        <div className='flex py-[5px] justify-between'>
+        <div className='flex mt-[5px] py-[5px] justify-between'>
             <p>{listLength} items left</p>
             <div className='flex gap-[5px]'>
                 {
